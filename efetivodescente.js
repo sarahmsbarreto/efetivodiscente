@@ -1,22 +1,25 @@
+function calcularTotal(precoUnitario, quantidade) {
+  return precoUnitario * quantidade;
+}
 
-const nomes = ["Ana", "Bruno", "Carlos", "Daniela", "Erick"];
-console.log("O terceiro nome é:", nomes[2]);
+function aplicarDesconto(valorTotal) {
+  if (valorTotal > 100) {
+    return valorTotal * 0.9; // 10% de desconto
+  } else {
+    return valorTotal; // sem desconto
+  }
+}
 
+function exibirResumo(valorTotal, valorComDesconto) {
+  console.log("===== RESUMO DA COMPRA =====");
+  console.log("Valor total (sem desconto): R$ " + valorTotal.toFixed(2));
+  console.log("Valor final (com desconto): R$ " + valorComDesconto.toFixed(2));
+}
 
-nomes.push("Flávia");
-nomes.unshift("Gabriela");
-console.log("Array após adições:", nomes);
+let preco = parseFloat(prompt("Digite o preço unitário do produto:"));
+let quantidade = parseInt(prompt("Digite a quantidade comprada:"));
 
+let valorTotal = calcularTotal(preco, quantidade);
+let valorComDesconto = aplicarDesconto(valorTotal);
 
-nomes.pop();
-console.log("Array após remover o último nome:", nomes);
-
-
-const numerosOriginais = [2, 4, 6, 8];
-const numerosDobrados = numerosOriginais.map(numero => numero * 2);
-console.log("Array com valores dobrados:", numerosDobrados);
-
-
-const listaNumeros = [1, 3, 5, 7, 9];
-const numerosMaioresQue5 = listaNumeros.filter(numero => numero > 5);
-console.log("Números maiores que 5:", numerosMaioresQue5);
+exibirResumo(valorTotal, valorComDesconto);
